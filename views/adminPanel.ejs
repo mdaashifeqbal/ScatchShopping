@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Add Products</title>
+  </head>
+
+  <body>
+    <div
+      class="h-screen w-full text-black flex lg:flex-row flex-col lg:ustify-center"
+    >
+      <div class="lg:h-full lg:w-[15%]">
+        <h1 class="text-lg font-bold m-2">Scatch</h1>
+        <div
+          class="lg:h-[80%] w-full p-5 flex flex-col justify-between gap-5 lg:gap-0"
+        >
+          <div>
+            <a class="block font-semibold" href="/products/removeproducts">All Products</a>
+            <a class="block font-semibold" href="/owners/adminPanel">Create New Product</a>
+          </div>
+          <div>
+            <a
+              class="bg-blue-700 px-5 py-1 pb-2 rounded-2xl text-white font-semibold"
+              href="/owners/logout"
+              >Logout</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:h-full lg:w-[85%] lg:py-23 lg:px-20">
+        <h2 class="font-bold text-lg">Create New Product</h2>
+
+        <div class="w-full lg:p-10">
+          <form
+            class="w-full flex justify-between lg:flex-row flex-col lg:items-center"
+            action="/products/createproducts"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <div class="flex flex-col gap-5">
+              <div>
+                <h3 class="font-semibold mb-2 lg:text-lg font-serif">
+                  Products Details
+                </h3>
+                <label class="block">Product image</label>
+                <input
+                  class="block outline-none bg-red-400 p-2 rounded"
+                  type="file"
+                  name="image"
+                  required
+                />
+              </div>
+              <input
+                class="block outline-none w-[70vw] lg:w-[22vw] py-2 bg-red-200 rounded-md pl-2"
+                type="text"
+                placeholder="Product Name"
+                name="name"
+                required
+              />
+              <input
+                class="block outline-none w-[70vw] lg:w-[22vw] py-2 bg-red-200 rounded-md pl-2"
+                type="number"
+                placeholder="Product Price"
+                name="price"
+                required
+              />
+              <input
+                class="block outline-none w-[70vw] lg:w-[22vw] py-2 bg-red-200 rounded-md pl-2"
+                type="number"
+                placeholder="Product Discount (85%)"
+                name="discount"
+              />
+            </div>
+
+            <div class="flex flex-col gap-3 lg:gap-5">
+              <h3 class="font-semibold lg:mb-2 text-lg font-serif">
+                Panels Details
+              </h3>
+              <input
+                class="block outline-none w-[70vw] lg:w-[22vw] py-2 bg-red-200 rounded-md pl-2"
+                type="text"
+                placeholder="BackgroundColor (#540863)"
+                name="bgcolor"
+              />
+              <input
+                class="block outline-none w-[70vw] lg:w-[22vw] py-2 bg-red-200 rounded-md pl-2"
+                type="text"
+                placeholder="Panel Color (#540863)"
+                name="panelcolor"
+                required
+              />
+              <input
+                class="block outline-none w-[70vw] lg:w-[22vw] py-2 bg-red-200 rounded-md pl-2"
+                type="text"
+                placeholder="TextColor (#540863)"
+                name="textcolor"
+                required
+              />
+            </div>
+            <input
+              class="px-2 lg:px-5 py-3 bg-blue-700 rounded-lg cursor-pointer active:scale-95"
+              type="submit"
+              value="Create New product"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

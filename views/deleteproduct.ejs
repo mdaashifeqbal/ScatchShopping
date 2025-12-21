@@ -1,0 +1,55 @@
+ <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Product Cart</title>
+    </head>
+
+    <body>
+        <div>
+            <a class="p-2 text-blue-700 hover:underline font-bold"
+                href="/owners/adminPanel">Create New Prodcts</a>
+        </div>
+        <div
+            class="bg-gray-100 min-h-screen flex justify-center items-center flex-wrap gap-5 p-4">
+            <%
+            products.reverse().map((product)=>{
+            %>
+
+            <div
+                class="max-w-sm w-full bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 p-4">
+                <!-- Product Image -->
+                <div class="w-full h-48 overflow-hidden rounded-lg">
+                    <img
+                        src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
+                        alt="Product"
+                        class="w-full h-full object-cover">
+                </div>
+
+                <!-- Product Info -->
+                <div class="mt-4">
+                    <h2 class="text-lg font-semibold text-gray-800"><%=
+                        product.name %></h2>
+                    <p class="text-gray-600 text-sm mt-1">Price:
+                        <span class="text-green-600 font-bold">₹<%=
+                            product.price %></span>
+                    </p>
+                    <p class="text-red-500 text-sm font-semibold">Discount: ₹<%=
+                        product.discount %></p>
+                </div>
+
+                <!-- Delete Button -->
+                <div class="flex justify-center">
+                     <form action="/products/removeproducts/<%= product._id %>" method="post">
+                        <input type="submit" value="🗑️ Delete Product"  class="inline-block text-white bg-red-500 hover:bg-red-600 font-semibold py-2 px-4 rounded-lg transition">
+                        </form>
+                </div>
+            </div>
+            <%
+            })
+            %>
+        </div>
+    </body>
+</html>

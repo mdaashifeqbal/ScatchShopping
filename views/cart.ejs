@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script
+            src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <title>My Cart</title>
+    </head>
+
+    <body>
+        <%- include('partials/header') %>
+
+        <div class="h-screen w-full lg:p-20 flex flex-col gap-5">
+            <h2 class="text-xl m-1 font-semibold">scatch</h2>
+            <%
+            userCart.cart.reverse().map((product)=>{
+            %>
+            <div
+                class="cartcard h-80 lg:h-20 w-full bg-red-100 py-3 lg:py-0 rounded flex-col flex lg:flex-row  lg:justify-between gap-2 items-center px-10">
+                <div
+                    class="image h-[30%] lg:h-[70%] w-[35%] lg:w-[5%] bg-red-500 rounded overflow-hidden">
+                    <img class="h-full w-full object-center"
+                         src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
+                        alt="image unavialble" >
+                </div>
+                <h2 class="font-semibold"><%= product.name %></h2>
+                <h2 class="font-bold">₹ <%= product.price %></h2>
+                <h2 class="font-semibold"> ₹ <%= product.discount %> off</h2>
+                <h2 class="font-semibold">Total: <%= product.price- product.discount  %></h2>
+                <div>
+                    <a
+                        class="px-5 py-2 bg-blue-600 rounded-lg font=font-semibold text-white"
+                        href="/users/orderPlaced"  >Buy Now</a>
+
+                        <a
+                        class="px-5 py-2 bg-blue-600 rounded-lg font=font-semibold text-white"
+                        href="/users/cart/<%=product._id %>" >Remove</a>
+                </div>
+            </div>
+
+            <%
+
+            })
+
+            %>
+
+        </div>
+    </body>
+
+</html>

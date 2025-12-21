@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Shop Products</title>
+  </head>
+
+  <body>
+    <div class="h-screen w-full">
+       <div class="w-full flex justify-between items-center px-5">
+         <h2 class="text-xl m-1 font-semibold">scatch</h2>
+         <%- include('partials/header' ,{product:products}) %>
+       </div>
+      <div class="min-h-screen w-full lg:p-5 px-2 flex flex-wrap gap-3">
+        <!-- cards -->
+        <% products.reverse().map((product)=>{ %>
+        <div class="h-[25vh] lg:h-[37vh] w-[45vw] lg:w-[13vw]">
+          <div class="h-[70%] w-full">
+            <img
+              class="h-full w-full object-cover object-center"
+              src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
+              alt="image unavailable"
+            />
+          </div>
+          <div
+            class="h-[30%] w-full bg-[<%= product.panelcolor %>] flex justify-between lg:p-3 items-center"
+          >
+            <div>
+              <h2
+                class="leading-3 whitespace-nowrap line-clamp-1 lg:whitespace-normal lg:leading-5 text-[3vw] lg:text-[1vw] text-[<%= product.textcolor %>]"
+              >
+                <%=product.name %>
+              </h2>
+              <p class="text-[3vw] lg:text-[1.2vw] text-[<%= product.textcolor %>]">
+                ₹ <%=product.price %>
+              </p>
+            </div>
+            <div class="flex flex-col justify-center items-center">
+              <h2
+                class=" font-semibold text-[4vw] lg:text-[1vw] text-[<%= product.textcolor %>]"
+              >
+                ₹<%= product.discount %> off
+              </h2>
+              <div
+                class="h-4 w-4 lg:h-6 lg:w-6 bg-white rounded-full flex justify-center items-center"
+              >
+                <a href="/users/addtocart/<%=product._id %>"><i class="fa-solid fa-plus text-[4vw] lg:text-[1.2vw]"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+        <!-- cards -->
+      </div>
+    </div>
+  </body>
+</html>

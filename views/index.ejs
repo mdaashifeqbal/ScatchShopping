@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Scatch SignUp|Login</title>
+  </head>
+  <body>
+    <div class="h-screen w-full text-black flex lg:flex-row flex-col">
+      <h1 class="text-lg font-bold m-2">Scatch</h1>
+
+      <!-- signUp page start -->
+      <div
+        class="h-full lg:w-1/2 text-white flex justify-center items-center border-r-[1px] border-red-200"
+      >
+        <div>
+          <h3 class="text-3xl font-semibold text-black">
+            Welcome to <span class="text-blue-500 font-bold">Scatch</span>
+          </h3>
+          <h4 class="text-black text-lg mb-2 font-semibold">
+            create you account
+          </h4>
+          <form class="w-full flex flex-col gap-4" action="/users/register" method="post">
+            <input
+              class="lg:w-[30vw] py-1 rounded pl-2 outline-none border-none bg-zinc-200 text-black"
+              type="text"
+              placeholder="fullname"
+              name="fullname"
+               required
+            />
+            <input
+              class="lg:w-[30vw] py-1 rounded pl-2 outline-none border-none bg-zinc-200 text-black"
+              type="email"
+              placeholder="email"
+              name="email"
+               required
+            />
+            <input
+              class="lg:w-[30vw] py-1 rounded pl-2 outline-none border-none bg-zinc-200 text-black"
+              type="password"
+              placeholder="password"
+              name="password"
+               required
+            />
+            <div>
+              <input
+                type="submit"
+                class="px-3 lg:px-4 py-2 lg:py-3 font-semibold cursor-pointer active:scale-95 text-sm bg-blue-700 text-white rounded-3xl"
+                value="Create My Account"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- signUp page end -->
+
+      <!-- login page start-->
+      <div class="h-full lg:w-1/2 text-white flex justify-center items-center">
+        <div>
+          <h3 class="text-3xl font-semibold text-black"></h3>
+          <h4 class="text-black text-3xl font-semibold mb-3">
+            Login Your Account
+          </h4>
+          <form class="w-full flex flex-col gap-4" action="/users/login" method="post">
+            <input
+              class="lg:w-[30vw] py-1 rounded pl-2 outline-none border-none bg-zinc-200 text-black"
+              type="email"
+              placeholder="email"
+              name="email"
+               required
+            />
+            <input
+              class="lg:w-[30vw] py-1 rounded pl-2 outline-none border-none bg-zinc-200 text-black"
+              type="password"
+              placeholder="password"
+              name="password"
+               required
+            />
+            <div>
+              <input
+                type="submit"
+                class="px-6 py-1 lg:px-8 lg:py-3 font-semibold cursor-pointer active:scale-95 text-sm bg-blue-700 text-white rounded-2xl"
+                value="Login"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- login page start-->
+    </div>
+  </body>
+</html>
