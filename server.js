@@ -1,9 +1,9 @@
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
-const databaseConnect = require("./config/mongoose-connect");
-
 require("dotenv").config();
+
+require("./config/mongoose-connect");
 
 const PORT = process.env.PORT || 3000;
 

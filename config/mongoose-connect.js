@@ -1,11 +1,7 @@
 const mongoose=require("mongoose");
-const config=require("config");
 
-
-mongoose.connect(`${config.get("MONGODB_URI")}/Scatch`).then(()=>{
-    console.log("database connected successfully")
+mongoose.connect(process.env.MONGO_URI).then(()=>{
+    console.log('Mongodb database connected successful')
 }).catch((err)=>{
-    console.log("database connection failed",err);
-});
-
-module.exports=mongoose.connection;
+    console.log("database connection failed", err.message);
+})
