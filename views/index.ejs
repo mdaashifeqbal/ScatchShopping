@@ -4,92 +4,161 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Scatch SignUp|Login</title>
+    <title>Scatch | Auth</title>
   </head>
-  <body>
-    <div class="h-screen w-full text-black flex lg:flex-row flex-col">
-      <h1 class="text-lg font-bold m-2">Scatch</h1>
 
-      <!-- signUp page start -->
-      <div
-        class="h-full lg:w-1/2 text-white flex justify-center items-center border-r-[1px] border-red-200"
-      >
-        <div>
-          <h3 class="text-3xl font-semibold text-black">
-            Welcome to <span class="text-blue-500 font-bold">Scatch</span>
-          </h3>
-          <h4 class="text-black text-lg mb-2 font-semibold">
-            create you account
-          </h4>
-          <form class="w-full flex flex-col gap-4" action="/users/register" method="post">
+  <body class="bg-gradient-to-br from-blue-100 via-white to-purple-100 min-h-screen flex items-center justify-center">
+
+    <!-- Main Container -->
+    <div class="w-full max-w-6xl bg-white shadow-2xl rounded-3xl overflow-hidden grid lg:grid-cols-2">
+
+      <!-- LEFT SIDE -->
+      <div class="hidden lg:flex flex-col justify-center items-center bg-blue-600 text-white p-10">
+        <h1 class="text-4xl font-bold mb-4">Scatch</h1>
+        <p class="text-lg text-center opacity-90">
+          Fast. Simple. Smart Shopping.
+        </p>
+
+        <div class="mt-10 text-center">
+          <p class="mb-2">Are you an admin?</p>
+          <a href="/owners/ownerLogin" class="underline hover:text-gray-200">
+            Login as Admin
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="p-8 lg:p-12 flex flex-col justify-center">
+
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+          Welcome 👋
+        </h2>
+
+        <!-- SIGNUP -->
+        <div class="mb-10">
+          <h3 class="text-xl font-semibold mb-3 text-blue-600">Create Account</h3>
+
+          <form action="/users/register" method="post" class="space-y-4">
+
             <input
-              class="lg:w-[30vw] py-1 rounded pl-2 outline-none border-none bg-zinc-200 text-black"
+              class="w-full p-3 rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
               type="text"
-              placeholder="fullname"
+              placeholder="Full Name"
               name="fullname"
-               required
+              required
             />
-            <input
-              class="lg:w-[30vw] py-1 rounded pl-2 outline-none border-none bg-zinc-200 text-black"
-              type="email"
-              placeholder="email"
-              name="email"
-               required
-            />
-            <input
-              class="lg:w-[30vw] py-1 rounded pl-2 outline-none border-none bg-zinc-200 text-black"
-              type="password"
-              placeholder="password"
-              name="password"
-               required
-            />
-            <div>
-              <input
-                type="submit"
-                class="px-3 lg:px-4 py-2 lg:py-3 font-semibold cursor-pointer active:scale-95 text-sm bg-blue-700 text-white rounded-3xl"
-                value="Create My Account"
-              />
-            </div>
-          </form>
-        </div>
-      </div>
-      <a class="text-center" href="/owners/ownerLogin">Admin login</a>
-      <!-- signUp page end -->
 
-      <!-- login page start-->
-      <div class="h-full lg:w-1/2 text-white flex justify-center items-center">
-        <div>
-          <h3 class="text-3xl font-semibold text-black"></h3>
-          <h4 class="text-black text-3xl font-semibold mb-3">
-            Login Your Account
-          </h4>
-          <form class="w-full flex flex-col gap-4" action="/users/login" method="post">
             <input
-              class="lg:w-[30vw] py-1 rounded pl-2 outline-none border-none bg-zinc-200 text-black"
+              class="w-full p-3 rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
               type="email"
-              placeholder="email"
+              placeholder="Email"
               name="email"
-               required
+              required
             />
-            <input
-              class="lg:w-[30vw] py-1 rounded pl-2 outline-none border-none bg-zinc-200 text-black"
-              type="password"
-              placeholder="password"
-              name="password"
-               required
-            />
-            <div>
+
+            <!-- PASSWORD WITH TOGGLE -->
+            <div class="relative">
               <input
-                type="submit"
-                class="px-6 py-1 lg:px-8 lg:py-3 font-semibold cursor-pointer active:scale-95 text-sm bg-blue-700 text-white rounded-2xl"
-                value="Login"
+                id="signupPassword"
+                class="w-full p-3 pr-12 rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                type="password"
+                placeholder="Password"
+                name="password"
+                required
               />
+
+              <button
+                type="button"
+                onclick="togglePassword('signupPassword', this)"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600"
+              >
+                👁️
+              </button>
             </div>
+
+            <button
+              type="submit"
+              class="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition duration-200 active:scale-95"
+            >
+              Create Account
+            </button>
           </form>
         </div>
+
+        <!-- Divider -->
+        <div class="flex items-center gap-3 my-6">
+          <hr class="flex-1 border-gray-300" />
+          <span class="text-gray-500 text-sm">OR</span>
+          <hr class="flex-1 border-gray-300" />
+        </div>
+
+        <!-- LOGIN -->
+        <div>
+          <h3 class="text-xl font-semibold mb-3 text-green-600">Login</h3>
+
+          <form action="/users/login" method="post" class="space-y-4">
+
+            <input
+              class="w-full p-3 rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-400"
+              type="email"
+              placeholder="Email"
+              name="email"
+              required
+            />
+
+            <!-- PASSWORD WITH TOGGLE -->
+            <div class="relative">
+              <input
+                id="loginPassword"
+                class="w-full p-3 pr-12 rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-400"
+                type="password"
+                placeholder="Password"
+                name="password"
+                required
+              />
+
+              <button
+                type="button"
+                onclick="togglePassword('loginPassword', this)"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600"
+              >
+                👁️
+              </button>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition duration-200 active:scale-95"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+
+        <!-- MOBILE ADMIN LINK -->
+        <div class="mt-6 text-center lg:hidden">
+          <a href="/owners/ownerLogin" class="text-blue-600 underline">
+            Admin Login
+          </a>
+        </div>
+
       </div>
-      
-      <!-- login page end-->
     </div>
+
+    <!-- SCRIPT -->
+    <script>
+      function togglePassword(id, btn) {
+        const input = document.getElementById(id);
+
+        if (input.type === "password") {
+          input.type = "text";
+          btn.textContent = "🙈";
+        } else {
+          input.type = "password";
+          btn.textContent = "👁️";
+        }
+      }
+    </script>
+
   </body>
 </html>

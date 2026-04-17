@@ -4,48 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Admin login</title>
+    <title>Admin Login | Scatch</title>
   </head>
-  <body>
-    <div class="h-screen w-full text-black flex lg:flex-row flex-col justify-center">
-       <h1 class="text-lg font-bold m-2">Scatch</h1>
-      <div class="lg:w-1/2 text-white flex justify-center items-center">
-        <div>
-          <h3 class="text-3xl font-semibold text-black"></h3>
-          <h4 class="text-black text-3xl font-semibold mb-3">
-            Login Admin Account
-          </h4>
-          <form
-            class="w-full flex flex-col gap-4"
-            action="/owners/ownerLogin"
-            method="post"
-          >
-            <input
-              class="lg:w-[30vw] py-1 rounded pl-2 outline-none border-none bg-zinc-200 text-black"
-              type="text"
-              placeholder="email"
-              name="email"
-              required
-            />
-            <input
-              class="lg:w-[30vw] py-1 rounded pl-2 outline-none border-none bg-zinc-200 text-black"
-              type="password"
-              placeholder="password"
-              name="password"
-              required
-            />
-            
-            <div>
-              <input
-                type="submit"
-                class="px-6 py-1 lg:px-8 lg:py-3 font-semibold cursor-pointer active:scale-95 text-sm bg-blue-700 text-white rounded-2xl"
-                value="Login"
-              />
-            </div>
-          </form>
-          
-        </div>
+
+  <body
+    class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen flex items-center justify-center">
+
+    <!-- CARD -->
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
+
+      <!-- HEADER -->
+      <div class="text-center mb-6">
+        <h1 class="text-2xl font-bold text-gray-800">Scatch Admin</h1>
+        <p class="text-sm text-gray-500">Secure Login Panel</p>
       </div>
+
+      <!-- FORM -->
+      <form action="/owners/ownerLogin" method="post" class="space-y-4">
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Admin Email"
+          required
+          class="w-full p-3 rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+          class="w-full p-3 rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition active:scale-95">
+          Login as Admin
+        </button>
+      </form>
+
+      <!-- FOOTER -->
+      <div class="mt-6 text-center">
+        <a href="/" class="text-sm text-blue-600 hover:underline">
+          ← Back to User Panel
+        </a>
+      </div>
+
     </div>
+
   </body>
 </html>
