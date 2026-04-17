@@ -79,6 +79,20 @@ router.get("/cart/:productId", isLoggedIn, async (req, res) => {
 });
 
 
+//my account route
+router.get("/myaccount", isLoggedIn, async (req, res) => {
+  try {
+    const user = await userModel
+      .findOne({ email: req.user.email })
+      .select("-password")
+      .select("email");
+    res.render("account", { user });
+  } catch (err) {
+    res.send(err.message);
+  } 
+});
+
+
 //order placed feature comming soon route
 
 router.get("/orderPlaced",isLoggedIn,(req,res)=>{

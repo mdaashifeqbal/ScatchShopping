@@ -1,113 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Add Products</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Admin Panel | Scatch</title>
+</head>
 
-  <body>
-    <div
-      class="h-screen w-full text-black flex lg:flex-row flex-col lg:ustify-center"
-    >
-      <div class="lg:h-full lg:w-[15%]">
-        <h1 class="text-lg font-bold m-2">Scatch</h1>
-        <div
-          class="lg:h-[80%] w-full p-5 flex flex-col justify-between gap-5 lg:gap-0"
-        >
-          <div>
-            <a class="block font-semibold" href="/products/removeproducts">All Products</a>
-            <a class="block font-semibold" href="/owners/adminPanel">Create New Product</a>
-          </div>
-          <div>
-            <a
-              class="bg-blue-700 px-5 py-1 pb-2 rounded-2xl text-white font-semibold"
-              href="/owners/logout"
-              >Logout</a
-            >
-          </div>
-        </div>
+<body class="bg-gray-100">
+
+  <div class="flex min-h-screen">
+
+    <!-- SIDEBAR -->
+    <div class="w-64 bg-gray-900 text-white flex flex-col justify-between p-5">
+      <div>
+        <h1 class="text-2xl font-bold mb-6">Scatch Admin</h1>
+
+        <nav class="flex flex-col gap-3">
+          <a href="/products/removeproducts" class="hover:bg-gray-700 p-2 rounded-lg">All Products</a>
+          <a href="/owners/adminPanel" class="bg-blue-600 p-2 rounded-lg">Create Product</a>
+        </nav>
       </div>
 
-      <div class="lg:h-full lg:w-[85%] lg:py-23 lg:px-20">
-        <h2 class="font-bold text-lg">Create New Product</h2>
-
-        <div class="w-full lg:p-10">
-          <form
-            class="w-full flex justify-between lg:flex-row flex-col lg:items-center"
-            action="/products/createproducts"
-            method="post"
-            enctype="multipart/form-data"
-          >
-            <div class="flex flex-col gap-5">
-              <div>
-                <h3 class="font-semibold mb-2 lg:text-lg font-serif">
-                  Products Details
-                </h3>
-                <label class="block">Product image</label>
-                <input
-                  class="block outline-none bg-red-400 p-2 rounded"
-                  type="file"
-                  name="image"
-                  required
-                />
-              </div>
-              <input
-                class="block outline-none w-[70vw] lg:w-[22vw] py-2 bg-red-200 rounded-md pl-2"
-                type="text"
-                placeholder="Product Name"
-                name="name"
-                required
-              />
-              <input
-                class="block outline-none w-[70vw] lg:w-[22vw] py-2 bg-red-200 rounded-md pl-2"
-                type="number"
-                placeholder="Product Price"
-                name="price"
-                required
-              />
-              <input
-                class="block outline-none w-[70vw] lg:w-[22vw] py-2 bg-red-200 rounded-md pl-2"
-                type="number"
-                placeholder="Product Discount (85%)"
-                name="discount"
-              />
-            </div>
-
-            <div class="flex flex-col gap-3 lg:gap-5">
-              <h3 class="font-semibold lg:mb-2 text-lg font-serif">
-                Panels Details
-              </h3>
-              <input
-                class="block outline-none w-[70vw] lg:w-[22vw] py-2 bg-red-200 rounded-md pl-2"
-                type="text"
-                placeholder="BackgroundColor (#540863)"
-                name="bgcolor"
-              />
-              <input
-                class="block outline-none w-[70vw] lg:w-[22vw] py-2 bg-red-200 rounded-md pl-2"
-                type="text"
-                placeholder="Panel Color (#540863)"
-                name="panelcolor"
-                required
-              />
-              <input
-                class="block outline-none w-[70vw] lg:w-[22vw] py-2 bg-red-200 rounded-md pl-2"
-                type="text"
-                placeholder="TextColor (#540863)"
-                name="textcolor"
-                required
-              />
-            </div>
-            <input
-              class="px-2 lg:px-5 py-3 bg-blue-700 rounded-lg cursor-pointer active:scale-95"
-              type="submit"
-              value="Create New product"
-            />
-          </form>
-        </div>
-      </div>
+      <a href="/owners/logout" class="bg-red-500 text-center py-2 rounded-lg hover:bg-red-600">
+        Logout
+      </a>
     </div>
-  </body>
+
+    <!-- MAIN CONTENT -->
+    <div class="flex-1 p-6">
+
+      <h2 class="text-2xl font-semibold mb-6 text-gray-800">
+        Create New Product
+      </h2>
+
+      <div class="bg-white p-6 rounded-2xl shadow-md max-w-3xl">
+
+        <form action="/products/createproducts" method="post" enctype="multipart/form-data" class="grid md:grid-cols-2 gap-6">
+
+          <!-- LEFT -->
+          <div class="flex flex-col gap-4">
+            <h3 class="font-semibold text-gray-700">Product Details</h3>
+
+            <input type="file" name="image" required
+              class="p-2 border rounded-lg bg-gray-50"/>
+
+            <input type="text" name="name" placeholder="Product Name" required
+              class="p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-blue-400 outline-none"/>
+
+            <input type="number" name="price" placeholder="Product Price" required
+              class="p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-blue-400 outline-none"/>
+
+            <input type="number" name="discount" placeholder="Discount (₹)"
+              class="p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-blue-400 outline-none"/>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="flex flex-col gap-4">
+            <h3 class="font-semibold text-gray-700">Panel Styling</h3>
+
+            <input type="text" name="bgcolor" placeholder="Background Color (#ffffff)"
+              class="p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-blue-400 outline-none"/>
+
+            <input type="text" name="panelcolor" placeholder="Panel Color (#000000)" required
+              class="p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-blue-400 outline-none"/>
+
+            <input type="text" name="textcolor" placeholder="Text Color (#ffffff)" required
+              class="p-3 rounded-lg bg-gray-100 focus:ring-2 focus:ring-blue-400 outline-none"/>
+          </div>
+
+          <!-- SUBMIT -->
+          <div class="md:col-span-2">
+            <button
+              type="submit"
+              class="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+            >
+              Create Product
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</body>
 </html>
